@@ -27,6 +27,13 @@ public class Usuario implements UserDetails {
     private String email;
     private String clave;
 
+    public Usuario(DatosUsuario datosUsuario) {
+        this.id = datosUsuario.id();
+        this.nombre = datosUsuario.nombre();
+        this.email = datosUsuario.email();
+        this.clave = datosUsuario.clave();
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

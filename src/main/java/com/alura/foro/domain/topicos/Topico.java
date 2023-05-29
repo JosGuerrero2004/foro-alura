@@ -23,7 +23,7 @@ public class Topico {
     private String titulo;
     private String mensaje;
     @Column(name = "fecha_creacion")
-    private Date fechaCreacion;
+    private Date fechaCreacion = new Date();
     EstadoTopico estado;
     @ManyToOne
     @JoinColumn(name = "autor")
@@ -31,4 +31,12 @@ public class Topico {
     @ManyToOne
     @JoinColumn(name = "curso")
     private Curso curso;
+
+    public Topico(DatosRegistroTopico datosRegistroTopico) {
+        this.titulo = datosRegistroTopico.titulo();
+        this.mensaje = datosRegistroTopico.mensaje();
+        this.estado = datosRegistroTopico.estadoTopico();
+        this.usuario = new Usuario(datosRegistroTopico.usuario());
+        this.curso = new Curso(datosRegistroTopico.curso());
+    }
 }

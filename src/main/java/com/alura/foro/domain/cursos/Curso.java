@@ -19,4 +19,10 @@ public class Curso {
     private long id;
     private String nombre;
     private String categoria;
+
+    public Curso(DatosCurso curso) {
+        this.id = curso.id();
+        this.nombre = curso.nombre();
+        this.categoria = curso.categoria();
+    }
 }
