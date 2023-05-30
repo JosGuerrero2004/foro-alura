@@ -1,13 +1,10 @@
 package com.alura.foro.controller;
 
-import com.alura.foro.domain.cursos.Curso;
 import com.alura.foro.domain.topicos.*;
-import com.alura.foro.domain.usuarios.Usuario;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -35,8 +32,11 @@ public class TopicoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DatosListadoTopico> buscarTopico(@PathVariable Long id){
-        return ResponseEntity.ok(new DatosListadoTopico(topicoRepository.findById(id).get()));
+    public ResponseEntity<DatosListadoTopico> buscarTopico(@PathVariable Long id) {
+        if (topicoRepository.findById(id).isPresent()) {
+            return ResponseEntity.ok(new DatosListadoTopico(topicoRepository.findById(id).get()));
+        }
+        return ResponseEntity.notFound().build();
     }
 
     //TODO:update
