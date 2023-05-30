@@ -29,4 +29,11 @@ public class Curso {
     public Curso(String nombre) {
         this.nombre = nombre;
     }
+
+    public Curso actualizarDatos(Curso curso) {
+        this.id = curso.id;
+        this.nombre = curso.nombre;
+        this.categoria = curso.categoria;
+        return this;
+    }
 }

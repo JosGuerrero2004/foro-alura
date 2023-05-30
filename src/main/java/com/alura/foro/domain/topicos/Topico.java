@@ -41,4 +41,22 @@ public class Topico {
         this.usuario = new Usuario(datosRegistroTopico.usuario());
         this.curso = new Curso(datosRegistroTopico.curso());
     }
+
+    public void actualizarDatos(DatosActualizarTopico datosActualizarTopico) {
+        if(datosActualizarTopico.titulo() != null){
+            this.titulo = datosActualizarTopico.titulo();
+        }
+        if(datosActualizarTopico.mensaje() != null){
+            this.mensaje = datosActualizarTopico.mensaje();
+        }
+        if(datosActualizarTopico.estadoTopico()!= null){
+            this.estadoTopico = datosActualizarTopico.estadoTopico();
+        }
+        if(datosActualizarTopico.usuario()!= null){
+            this.usuario = datosActualizarTopico.usuario();
+        }
+        if(datosActualizarTopico.curso()!= null){
+            this.curso = datosActualizarTopico.curso();
+        }
+    }
 }

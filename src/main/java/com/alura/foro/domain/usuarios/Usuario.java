@@ -76,4 +76,11 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public Usuario actualizarDatos(Usuario usuario) {
+        this.id = usuario.id;
+        this.nombre = usuario.nombre;
+        this.email = usuario.email;
+        return this;
+    }
 }

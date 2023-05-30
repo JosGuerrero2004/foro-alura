@@ -1,6 +1,7 @@
 package com.alura.foro.controller;
 
 import com.alura.foro.domain.topicos.*;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,7 +42,13 @@ public class TopicoController {
 
     //TODO:update
 
-
+    @PutMapping
+    @Transactional
+    public ResponseEntity<DatosReturnTopico> actualizarTopicos(@RequestBody @Valid DatosActualizarTopico datosActualizarTopico){
+        Topico topico = topicoRepository.getReferenceById(datosActualizarTopico.id());
+        topico.actualizarDatos(datosActualizarTopico);
+        return ResponseEntity.ok(new DatosReturnTopico(topico));
+    }
 
     //TODO:Delete
 }
