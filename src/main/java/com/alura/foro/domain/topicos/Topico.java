@@ -24,7 +24,9 @@ public class Topico {
     private String mensaje;
     @Column(name = "fecha_creacion")
     private Date fechaCreacion = new Date();
-    EstadoTopico estado;
+    @Column(name = "estado")
+    @Enumerated(EnumType.STRING)
+    EstadoTopico estadoTopico;
     @ManyToOne
     @JoinColumn(name = "autor")
     private Usuario usuario;
@@ -35,7 +37,7 @@ public class Topico {
     public Topico(DatosRegistroTopico datosRegistroTopico) {
         this.titulo = datosRegistroTopico.titulo();
         this.mensaje = datosRegistroTopico.mensaje();
-        this.estado = datosRegistroTopico.estadoTopico();
+        this.estadoTopico = datosRegistroTopico.estadoTopico();
         this.usuario = new Usuario(datosRegistroTopico.usuario());
         this.curso = new Curso(datosRegistroTopico.curso());
     }

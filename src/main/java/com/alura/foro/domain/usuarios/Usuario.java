@@ -31,7 +31,16 @@ public class Usuario implements UserDetails {
         this.id = datosUsuario.id();
         this.nombre = datosUsuario.nombre();
         this.email = datosUsuario.email();
-        this.clave = datosUsuario.clave();
+    }
+
+    public Usuario(Long id, String nombre, String email) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+    }
+
+    public Usuario(String nombre) {
+        this.nombre = nombre;
     }
 
 

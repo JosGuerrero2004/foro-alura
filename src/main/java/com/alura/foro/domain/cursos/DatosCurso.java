@@ -1,9 +1,10 @@
 package com.alura.foro.domain.cursos;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record DatosCurso(
-    @NotBlank
+    @NotNull
     Long id,
     @NotBlank
     String nombre,
