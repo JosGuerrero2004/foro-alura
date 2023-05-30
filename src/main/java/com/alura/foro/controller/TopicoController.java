@@ -34,6 +34,11 @@ public class TopicoController {
         return ResponseEntity.ok(topicoRepository.findAll(paginacion).map(DatosListadoTopico::new));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<DatosListadoTopico> buscarTopico(@PathVariable Long id){
+        return ResponseEntity.ok(new DatosListadoTopico(topicoRepository.findById(id).get()));
+    }
+
     //TODO:update
 
 
