@@ -40,8 +40,6 @@ public class TopicoController {
         return ResponseEntity.notFound().build();
     }
 
-    //TODO:update
-
     @PutMapping
     @Transactional
     public ResponseEntity<DatosReturnTopico> actualizarTopicos(@RequestBody @Valid DatosActualizarTopico datosActualizarTopico){
