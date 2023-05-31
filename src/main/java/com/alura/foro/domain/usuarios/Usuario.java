@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collection;
 import java.util.List;
@@ -42,6 +43,15 @@ public class Usuario implements UserDetails {
     public Usuario(String nombre) {
         this.nombre = nombre;
     }
+
+    //TODO: implement this method
+
+    /*public Usuario(DatosRegistroUsuario datosRegistroUsuario) {
+        PasswordEncoder passwordEncoder;
+        this.nombre = datosRegistroUsuario.nombre();
+        this.email = datosRegistroUsuario.email();
+        this.clave = datosRegistroUsuario.clave();
+    }*/
 
 
     @Override

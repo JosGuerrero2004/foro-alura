@@ -25,9 +25,30 @@ public class Respuesta {
     @JoinColumn(name = "topico")
     Topico topico;
     @Column(name = "fecha_creacion")
-    private Date fechaCreacion;
+    private Date fechaCreacion = new Date();
     @ManyToOne
     @JoinColumn(name = "usuario")
     private Usuario usuario;
-    private Boolean solucion;
+    private Boolean solucion = false;
+
+    public Respuesta(DatosRegistroRespuesta datosRegistroRespuesta) {
+        this.mensaje = datosRegistroRespuesta.mensaje();
+        this.topico = datosRegistroRespuesta.topico();
+        this.usuario = datosRegistroRespuesta.usuario();
+    }
+
+    public void actualizarDatos(DatosActualizarRespuesta datosActualizarRespuesta) {
+        if (datosActualizarRespuesta.mensaje() != null){
+            this.mensaje = datosActualizarRespuesta.mensaje();
+        }
+        if (datosActualizarRespuesta.topico() != null){
+            this.topico = datosActualizarRespuesta.topico();
+        }
+        if(datosActualizarRespuesta.usuario() != null){
+            this.usuario = datosActualizarRespuesta.usuario();
+        }
+        if (datosActualizarRespuesta.solucion() != null){
+            this.solucion = datosActualizarRespuesta.solucion();
+        }
+    }
 }
