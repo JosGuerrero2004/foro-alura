@@ -34,10 +34,9 @@ public class TopicoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<DatosListadoTopico> buscarTopico(@PathVariable Long id) {
-        if (topicoRepository.findById(id).isPresent()) {
-            return ResponseEntity.ok(new DatosListadoTopico(topicoRepository.findById(id).get()));
-        }
-        return ResponseEntity.notFound().build();
+        Topico topico = topicoRepository.getReferenceById(id);
+        var datosTopico = new DatosListadoTopico(topico);
+        return ResponseEntity.ok(datosTopico);
     }
 
     @PutMapping
@@ -51,7 +50,8 @@ public class TopicoController {
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<Void> eliminarTopico(@PathVariable Long id){
-        topicoRepository.deleteById(id);
+        Topico topico = topicoRepository.getReferenceById(id);
+        topicoRepository.delete(topico);
         return ResponseEntity.noContent().build();
     }
 }
